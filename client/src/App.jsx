@@ -1,11 +1,34 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "sign-up",
+    element: <SignUp />,
+  },
+  {
+    path: "sign-in",
+    element: <SignIn />,
+  },
+]);
 function App() {
-  return (
-    <>
-      <h2 className="text-3xl font-bold underline text-red-500">
-        MERN Property
-      </h2>
-    </>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
