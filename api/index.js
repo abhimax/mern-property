@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
 import userRoute from "./routes/user.route.js";
+import authRouter from "./routes/auth.route.js";
 configDotenv();
 
 const connectDb = async () => {
@@ -19,3 +20,4 @@ app.listen(3000, () => {
 });
 
 app.use("/api/user", userRoute);
+app.use("./api/auth", authRouter);
