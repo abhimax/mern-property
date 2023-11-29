@@ -1,7 +1,7 @@
 import User from "../modals/user.model.js";
 import bcryptjs from "bcryptjs";
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
   console.log("MONGO_HASH_KEY:", +process.env.MONGO_HASH_KEY);
   const hashPassword = await bcryptjs.hashSync(
@@ -13,6 +13,6 @@ export const signup = async (req, res) => {
     await newUser.save();
     res.status(201).json("User created successfully!");
   } catch (error) {
-    res.status(500).json(error.message);
+    next(error);
   }
 };
